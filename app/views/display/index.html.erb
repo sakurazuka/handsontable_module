@@ -1,0 +1,46 @@
+<%= link_to_function 'save', 'do_save()' %>
+<div id="example"></div>
+<script type="text/javascript">
+  var data = gon.items
+
+  $('#example').handsontable({
+    data: data,
+    //manualRowResize: true,
+    minSpareRows: 1,
+    colHeaders: false,
+    contextMenu: false,
+    contextMenu: ['row_above', 'row_below', 'remove_row'],
+    readOnly: true,
+    columns: [
+      {
+        type: 'numeric',
+      },
+      {
+        type: 'numeric',
+      },
+      {},
+      {
+        type: 'numeric',
+      },
+      {
+        type: 'numeric',
+        format: '0,0.00 $'
+      },
+      {
+        type: 'numeric',
+        format: '0,0.00 $'
+      }
+    ]
+  });
+
+  function do_save(){
+    var data = $('#example').data('handsontable').getData();
+    $.ajax({
+      type: 'POST',
+      url: "<%= display_bulk_update_path %>",
+      data: JSON.stringify({follows: data}),
+      dataType: 'text',
+      contentType: 'application/json'
+    });
+  }
+</script>

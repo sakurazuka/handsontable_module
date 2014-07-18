@@ -1,0 +1,18 @@
+defaults: &defaults
+  model:
+    left:
+      id: 'id'
+      lock_version: 'lock'
+      section: '区分'
+      num: '数'
+      price: '単価'
+      amount: '金額'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults
