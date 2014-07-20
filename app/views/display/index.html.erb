@@ -27,12 +27,12 @@
       },
       {
         type: 'numeric',
-        format: '0,0.00 $',
+        format: '0,000',
         readOnly: false
       },
       {
         type: 'numeric',
-        format: '0,0.00 $'
+        format: '0,000'
       }
     ]
   });
@@ -49,6 +49,9 @@
         $.each(data.message, function(){
           alert(this);
         });
+        if(data.result == true){
+          location.reload();
+        }
       }
     });
   }

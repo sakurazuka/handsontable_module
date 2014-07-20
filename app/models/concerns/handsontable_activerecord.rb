@@ -15,12 +15,12 @@ module HandsontableActiverecord
 
       if err_msg.blank?
         handson_update_or_create!(attributes)
-        {result: true, message: ['保存しました。']}
+        {result: true, message: [Settings.handson.message.success]}
       else
         {result: false, message: err_msg.flatten.uniq}
       end
     rescue ActiveRecord::StaleObjectError
-      {result: false, message: ['すでに他の人によって編集されています。']}
+      {result: false, message: [Settings.handson.message.lock_err]}
     rescue => e
       {result: false, message: [e.to_s]}
     end

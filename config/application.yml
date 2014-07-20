@@ -1,12 +1,15 @@
 defaults: &defaults
   handson:
     left:
-      id: 'id'
-      lock_version: 'lock'
+      id: 'left_id'
+      lock_version: 'left_lock'
       section: '区分'
       num: '数'
       price: '単価'
       amount: '金額'
+    message:
+      success: '保存しました。'
+      lock_err: 'すでに他の人によって編集されています。'
 
 development:
   <<: *defaults
