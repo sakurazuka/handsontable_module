@@ -7,6 +7,7 @@ class DisplayController < ApplicationController
   def bulk_update
     follows = params["follows"]
     follows.pop
+    follows.each_with_index{|f,i| f[5] = f[3].to_i * f[4].to_i unless i == 0}
     result = Left.handson_save(follows)
 
     render json: result, layout: false
