@@ -1,5 +1,5 @@
 defaults: &defaults
-  model:
+  handson:
     left:
       id: 'id'
       lock_version: 'lock'
