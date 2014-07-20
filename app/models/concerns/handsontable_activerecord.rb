@@ -6,7 +6,9 @@ module HandsontableActiverecord
       self.pluck(columns.join(',').to_sym).unshift(handson_header(columns))
     end
 
-    def handson_save(rows)
+    def handson_save(rows, *indexes)
+      rows = handson_select(rows, indexes) if indexes.present?
+
       header = rows.shift
       attributes = handson_attributes(rows, handson_colums(header))
       err_msg = handson_valid(attributes)
@@ -70,6 +72,10 @@ module HandsontableActiverecord
       attribute.delete(:id)
       attribute.delete(:lock_version)
       self.new(attribute)
+    end
+
+    def handson_select(rows, indexes)
+      rows.map{|r| r.values_at(*indexes)}
     end
   end
 end

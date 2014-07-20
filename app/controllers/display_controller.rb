@@ -1,7 +1,7 @@
 class DisplayController < ApplicationController
 
   def index
-    gon.items = Left.handson_load(:id, :lock_version, :section, :num, :price, :amount)
+    gon.items = Left.where.not(id: nil).handson_load(:id, :lock_version, :section, :num, :price, :amount)
   end
 
   def bulk_update
