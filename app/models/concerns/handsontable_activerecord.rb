@@ -6,6 +6,28 @@ module HandsontableActiverecord
       self.pluck(columns.join(',').to_sym).unshift(handson_header(columns))
     end
 
+    def handson_load_no_head(*columns)
+      self.pluck(columns.join(',').to_sym)
+    end
+
+    def handson_save_no_head(rows, columns, indexes=[])
+      rows = handson_select(rows, indexes) if indexes.present?
+
+      attributes = handson_attributes(rows, columns)
+      err_msg = handson_valid(attributes)
+
+      if err_msg.blank?
+        handson_update_or_create!(attributes)
+        {result: true, message: [Settings.handson.message.success]}
+      else
+        {result: false, message: err_msg.flatten.uniq}
+      end
+    rescue ActiveRecord::StaleObjectError
+      {result: false, message: [Settings.handson.message.lock_err]}
+    rescue => e
+      {result: false, message: [e.to_s]}
+    end
+
     def handson_save(rows, *indexes)
       rows = handson_select(rows, indexes) if indexes.present?
 
