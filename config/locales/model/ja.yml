@@ -1,13 +1,14 @@
-ja:
-  model:
-    left: '左'
-  attributes:
-    left:
-      id: 'id'
-      lock_version: 'lock'
-      section: '区分'
-      num: '数'
-      price: '単価'
-      amount: '金額'
+# ja:
+  # activerecord:
+    # model:
+      # left: '左'
+    # attributes:
+      # left:
+        # id: 'id'
+        # lock_version: 'lock'
+        # section: '区分'
+        # num: '数'
+        # price: '単価'
+        # amount: '金額'
 
 

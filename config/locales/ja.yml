@@ -192,3 +192,14 @@ ja:
       long: ! '%Y年%m月%d日(%a) %H時%M分%S秒 %z'
       short: ! '%y/%m/%d %H:%M'
     pm: 午後
+  activerecord:
+    model:
+      left: '左'
+    attributes:
+      left:
+        id: 'id'
+        lock_version: 'lock'
+        section: '区分'
+        num: '数'
+        price: '単価'
+        amount: '金額'
