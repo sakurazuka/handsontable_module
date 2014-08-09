@@ -11,10 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140706120420) do
+ActiveRecord::Schema.define(version: 20140809040927) do
 
   create_table "centers", force: true do |t|
     t.integer  "left_id"
+    t.integer  "parent_id"
     t.string   "code"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -30,9 +31,20 @@ ActiveRecord::Schema.define(version: 20140706120420) do
     t.datetime "updated_at"
   end
 
+  create_table "parents", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "rights", force: true do |t|
-    t.integer  "center_id"
+    t.integer  "left_id"
+    t.integer  "parent_id"
     t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tests", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end

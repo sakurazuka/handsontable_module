@@ -53,3 +53,8 @@ gem 'settingslogic', '~> 2.0.9'
 gem 'pry-byebug'
 gem 'pry-rails'
 gem 'activerecord-import', '~> 0.5.0'
+gem 'table_print', '~> 1.5.2'
+group :development, :test do
+  gem 'rspec-rails', '~> 3.0.0'
+  gem 'rspec-its', '~> 1.0.1'
+end
